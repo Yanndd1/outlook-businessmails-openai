@@ -27,7 +27,7 @@ function getSelectedText(): Promise<any> {
     try {
       Office.context.mailbox.item.body.getAsync(Office.CoercionType.Text, async function (asyncResult) {
         const configuration = new Configuration({
-          apiKey: "your-api-key",
+          apiKey: "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",
         });
         const openai = new OpenAIApi(configuration);
         const response = await openai.createChatCompletion({
@@ -36,11 +36,11 @@ function getSelectedText(): Promise<any> {
             {
               role: "system",
               content:
-                "You are a helpful assistant that can help users to better manage emails. The following prompt contains the whole mail thread. ",
+                "You are a helpful assistant that can help users to better manage emails, in french. The following prompt contains the whole mail thread. ",
             },
             {
               role: "user",
-              content: "Summarize the following mail thread and extract the key points: " + asyncResult.value,
+              content: "Summarize in french the following mail in thread and extract the key points: " + asyncResult.value,
             },
           ],
         });
